@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, ActivityIndicator, StatusBar } from "react-native";
 import styles from "../styles/styles";
 import SearchInput from "../components/searchInput"; // Assuming you have a SearchInput component
+import { useNavigation } from "@react-navigation/native";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 
 {
@@ -69,4 +71,50 @@ export default function Films() {
       />
     </View>
   );
+  const Item = ({ item }) => {
+    const navigation = useNavigation();
+  
+    const renderRightActions = () => {
+      return (
+        <View style={styles.swipeContainer}>
+          <Text style={styles.swipeText}>Swipe to View Details</Text>
+        </View>
+      );
+    };
+  
+    return (
+      <Swipeable
+        renderRightActions={renderRightActions}
+        onSwipeableRightOpen={() => navigation.navigate('Detail', { item })}
+      >
+        <View style={styles.itemContainer}>
+          <Text style={styles.itemText}>{item.name}</Text>
+        </View>
+      </Swipeable>
+    );
+  };
+  
+  const styles = StyleSheet.create({
+    itemContainer: {
+      padding: 20,
+      backgroundColor: '#ddd',
+      marginBottom: 10,
+    },
+    swipeContainer: {
+      backgroundColor: '#007bff',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 100,
+      margin: 5,
+    },
+    swipeText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    itemText: {
+      fontSize: 18,
+    },
+  });
+  
+  // Remove this export as there is already a default export for Films
 }

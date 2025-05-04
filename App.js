@@ -6,6 +6,11 @@ import styles from './styles/styles';
 import Header from './components/header';
 import SearchResults from './screens/searchResults';
 import NetInfo from '@react-native-community/netinfo';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ItemListScreen from './screens/itemListScreen';
+import DetailScreen from './screens/detailScreen';
+
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -57,4 +62,16 @@ export default function App() {
       </View>
     </View>
   );
+const Stack = createStackNavigator();
+
+function NavigationApp() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="ItemList" component={ItemListScreen} />
+        <Stack.Screen name="Detail" component={DetailScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 }
