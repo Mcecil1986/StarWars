@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, StatusBar } from 
-  "react-native";
+import { View, Text, TextInput, Button, StatusBar } from "react-native";
 import styles from "./styles";
 import { SearchInput } from "./components/searchInput";
 import { SearchModal } from "./components/searchModal";
@@ -18,18 +17,18 @@ export default function Home({ navigation }) {
     // Main container view
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      {/* Title and buttons container */}
-      <View style={styles.topContainer}>
-        <Text style={styles.Text}>SWAPI Galactic Guide</Text>
+    {/* Title and buttons container */}
+    <View style={styles.topContainer}>
+          <Text style={styles.text}>SWAPI Galactic Guide</Text>
 
         {/* Search input field */}
-        <SearchInput onSubmit={handleSearchSubmit}/>
-
+        <SearchInput onsubmit={handleSearchSubmit}/>
+        <SearchInput onSubmit={handleSearchSubmit} />
         {/* Search modal display */}
         <SearchModal 
         visible={modalVisible}
+        Text={searchTerm}
         text={searchTerm}
-        onClose={ ()=> setModalVisible(false) }
         />
 
         {/* Buttons container */}
@@ -37,7 +36,7 @@ export default function Home({ navigation }) {
           <Button
             title="Films"
             onPress={() => navigation.navigate("Films")}
-            color= '#D8C021'
+            color="#D8C021"
           />
           <Button
             title="Planets"
@@ -50,7 +49,7 @@ export default function Home({ navigation }) {
             color= '#D8C021'
           />
         </View>
-      </View>
-    </View>
-  );
+          </View>
+        </View>
+      );
 }
