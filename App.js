@@ -10,48 +10,15 @@ import NetInfo from '@react-native-community/netinfo';
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
-  
-  const handleSearch = () => {
-    console.log('Searching for:', searchQuery);
-    setShowResults(true);
-    
-  };
-
-    if (showResults) {
-      return <SearchResults query={searchQuery} goBack={() => setShowResults(false)} />;
-    }
-  
-
-  return (
-    <View style={styles.container}>
-
-        <Header />
-
-      
-        <View style={styles.searchContainer}>
-          <TextInput 
-          style ={styles.input}
-          placeholder='Search YourFlix'
-          placeholderTextColor={'#999'}
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          />
-          <Button title='Search' onPress={handleSearch} color='#D32F2F'/>
-        </View>
-      </SafeAreaView>
-   
-    </View>
-  );
-  const connectedMap = {
-  none: "Disconnected",
-  unknown: "Disconnected",
-  wifi: "Connected",
-  cell: "Connected",
-  mobile: "Connected",
-};
-
-export default function App() {
   const [connected, setConnected] = useState("");
+
+  const connectedMap = {
+    none: "Disconnected",
+    unknown: "Disconnected",
+    wifi: "Connected",
+    cell: "Connected",
+    mobile: "Connected",
+  };
 
   useEffect(() => {
     function onNetworkChange(connection) {
@@ -65,9 +32,29 @@ export default function App() {
     };
   }, []);
 
+  const handleSearch = () => {
+    console.log('Searching for:', searchQuery);
+    setShowResults(true);
+  };
+
+  if (showResults) {
+    return <SearchResults query={searchQuery} goBack={() => setShowResults(false)} />;
+  }
+
   return (
     <View style={styles.container}>
+      <Header />
       <Text>{connected}</Text>
+      <View style={styles.searchContainer}>
+        <TextInput 
+          style={styles.input}
+          placeholder='Search YourFlix'
+          placeholderTextColor={'#999'}
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
+        <Button title='Search' onPress={handleSearch} color='#D32F2F'/>
+      </View>
     </View>
   );
 }
