@@ -8,13 +8,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/pacifico": "*",
+    "@expo/vector-icons": "^14.0.2",
     "expo": "~52.0.46",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
     "react-native": "0.76.9",
-    "@expo/vector-icons": "^14.0.2",
-    "react-native-paper": "4.9.2",
-    "@expo-google-fonts/pacifico": "*"
+    "react-native-gesture-handler": "^2.25.0",
+    "react-native-paper": "4.9.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
